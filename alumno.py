@@ -49,39 +49,23 @@ def cargar(nombre_archivo):
         nombre, apellido, edad, ciudad, telefono, notas = dato
         
         # agregarlo a la lista
-        lista.append( dato )
+        lista.append( Alumno(codigo, nombre, apellido, edad, ciudad, telefono, notas) )
         
     # devuelve la lista
     return lista
 
 def promedioTotal(alumnos):
-    """ list(Alumno) -> number
-
-    Calcula el promedio total de las notas de los alumnos en la lista
-
-    >>> alumnos = list()
-    >>> alumnos.append(Alumno(51706891, "maria", "galarza", 19, "medellin", 3317692, [3.8, 2.6, 1.0, 2.5, 3.2]))
-    >>> alumnos.append(Alumno(41380016, "beatriz", "jacome", 21, "cali", 8871130, [3.7, 3.6, 1.5, 4.1, 1.7]))
-    >>> promedioTotal(alumnos)
-    2.77
-    >>> alumnos = list()
-    >>> alumnos.append(Alumno(4148316, "jaime", "diaz", 20, "cali", 4459988, [2.2, 4.2, 4.9, 4.5, 3.1]))
-    >>> alumnos.append(Alumno(98523512, "rodrigo", "romero", 21, "cali", 4481870, [4.6, 4.9, 3.9, 4.1, 5.0]))
-    >>> promedioTotal(alumnos)
-    4.140000000000001
     
-    """
     suma = 0.0
     cantidad = 0
     # recorrer toda la lista
     for alumno in alumnos:
-
-        print(alumno)
+        
         # calcular la suma de las notas, y la cantidad
-        #suma += alumno.promedio()
-        #cantidad += 1
+        suma += alumno.promedio()
+        cantidad += 1
     # devuelve el promedio
-    #return suma / cantidad
+    return suma / cantidad
 
 # Pruebas
 
