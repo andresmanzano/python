@@ -30,10 +30,12 @@ class Alumno:
     def promedio(self):
         return sum(self.notas) / len(self.notas)
 
+    def promedioEdad(self):
+    	return 0
+
 # Variables
 
 # Metodos
-
 def cargar(nombre_archivo):
     """ (string) -> lista
     
@@ -62,6 +64,18 @@ def promedioTotal(alumnos):
     for alumno in alumnos:
         
         # calcular la suma de las notas, y la cantidad
+        suma += alumno.promedio()
+        cantidad += 1
+    # devuelve el promedio
+    return suma / cantidad
+
+def edadPromedioTotal(alumnos):
+	suma = 0.0
+    cantidad = 0
+    # recorrer toda la lista
+    for alumno in alumnos:
+        
+        # calcular la suma de las edades, y la cantidad
         suma += alumno.promedio()
         cantidad += 1
     # devuelve el promedio
