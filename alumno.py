@@ -30,9 +30,6 @@ class Alumno:
     def promedio(self):
         return sum(self.notas) / len(self.notas)
 
-    def promedioEdad(self):
-    	return 0
-
 # Variables
 
 # Metodos
@@ -69,17 +66,42 @@ def promedioTotal(alumnos):
     # devuelve el promedio
     return suma / cantidad
 
-def edadPromedioTotal(alumnos):
-	suma = 0.0
+def edadPromedio(alumnos):
+    suma = 0.0
     cantidad = 0
     # recorrer toda la lista
-    for alumno in alumnos:
-        
+    for alumno in alumnos:        
         # calcular la suma de las edades, y la cantidad
-        suma += alumno.promedio()
+        suma += alumno.edad
         cantidad += 1
     # devuelve el promedio
     return suma / cantidad
+
+def edadPromedioCiudad(alumnos):
+
+    ciudades =  dict()
+    
+    #recorer toda la lista de alumnos y organizarlos por ciudades
+    for alumno in alumnos:
+        
+        if alumno.ciudad in ciudades:
+            #sumar valores de edad y cantidad en las ciudades que ya existen
+            ciudades[alumno.ciudad] = [ ciudades[alumno.ciudad][0] + alumno.edad , ciudades[alumno.ciudad][1] + 1 ]
+        else :
+            #crear onjeto ciudad: [suma de edades , cantidad]
+            ciudades[alumno.ciudad] = [ alumno.edad , 1 ]
+
+    #calcular promedio por ciudad
+    for key ,value in ciudades.items():
+        #crear cada objeto
+        edad, cantidad = value
+
+        #calcular y asignar por ciudad la edad promedio
+        ciudades[key] = edad / cantidad
+        
+        
+    #Retorna listado de ciudades con promedio de edad
+    return ciudades
 
 # Pruebas
 
@@ -91,4 +113,12 @@ if __name__ == "__main__":
 
 alumnos = cargar('alumnos.pickle')
 prom_total = promedioTotal(alumnos)
+prom_edad = edadPromedio(alumnos)
+prom_edad_ciudad = edadPromedioCiudad(alumnos)
+
+
+print('Promedio de edaddes  :', prom_edad)
+print('Promedio de edaddes por ciudad  :', prom_edad_ciudad)
 print('promedio total de notas  :', prom_total)
+
+
